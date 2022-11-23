@@ -2,13 +2,19 @@
 # wm independent hotkeys
 #
 
+# brightness
+XF86MonBrightnessDown
+	~/bin/scripts/brightness-down
+XF86MonBrightnessUp
+	~/bin/scripts/brightness-up
+
 # terminal emulator
 super + Return
 	urxvt
 
 # program launcher
 super + @space
-	dmenu_run
+	dmenu_run -fn 'Iosevka:size=8' -p 'run:'
 
 # make sxhkd reload its configuration files:
 super + Escape
