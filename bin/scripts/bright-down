@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+import subprocess
+
+val = float(subprocess.getoutput('xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d \' \''))
+dec = 0.1
+cap = 0.2
+
+if val > cap:
+  val = (round(val - dec, 2))
+  proc = subprocess.Popen(['xrandr', '--output', 'LVDS-0', '--brightness', f'{val}'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)

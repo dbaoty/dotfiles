@@ -10,11 +10,11 @@ XF86MonBrightnessUp
 
 # terminal emulator
 super + Return
-	urxvt
+	alacritty
 
 # program launcher
 super + @space
-	dmenu_run -fn 'Iosevka:size=8' -p 'run:'
+	rofi -show run
 
 # make sxhkd reload its configuration files:
 super + Escape

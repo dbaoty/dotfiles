@@ -1,0 +1,7 @@
+configuration {
+	modi: "window,drun,ssh";
+	font: "JetBrains Mono 12";
+
+}
+
+@theme "dmenu"
