@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 
+# TODO: throw in .xinitrc from ~
+# TODO: organize repo structure (home files to root dir, config files to .config)
+
 CONFIG_DIR="$HOME/.config"
 DOTFILES_DIR="$HOME/projects/personal/dotfiles"
 CURRENT_DIR=$(pwd)
 
-TODO=(
+CONFIG_TODO=(
     "alacritty"
     "i3"
     "i3status"
     "nvim"
     "yt-dlp"
+    "wallpapers"
+)
+
+HOME_TODO=(
+    ".xinitrc"
 )
 
 if [ $(pwd) != "$DOTFILES_DIR" ]; then
@@ -23,11 +31,11 @@ fi
 if [ -z "$1" ]; then
     echo "USAGE:    dots [ARGUMENT]"
     echo " - pull   pull local configuration files to repo"
-    echo " - push   distribute configuration files specified in 'TODO' to local configuration directory"
+    echo " - push   distribute configuration files specified in 'CONFIG_TODO' to local configuration directory"
     exit 1
 elif [ "$1" == "pull" ]; then
     echo "pulling dots to repo"
-    for dir in "${TODO[@]}"
+    for dir in "${CONFIG_TODO[@]}"
     do
         echo "  removing old $dir"
         rm -rf $dir
@@ -36,7 +44,7 @@ elif [ "$1" == "pull" ]; then
     done
 elif [ "$1" == "push" ]; then
     echo "distributing dots to config directory.. "
-    for dir in "${TODO[@]}"
+    for dir in "${CONFIG_TODO[@]}"
     do
         echo "$dir -> $CONFIG_DIR/$dir"
         cp -r $dir $CONFIG_DIR
