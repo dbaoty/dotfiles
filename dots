@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+CONFIG_DIR="$HOME/.config"
+DOTFILES_DIR="$HOME/projects/personal/dotfiles"
+CURRENT_DIR=$(pwd)
+
+TODO=(
+    "alacritty"
+    "i3"
+    "i3status"
+    "nvim"
+    "yt-dlp"
+)
+
+if [ $(pwd) != "$DOTFILES_DIR" ]; then
+    echo "ERROR:"
+    echo " - working directory: $(pwd)"
+    echo " - and desired directory: $DOTFILES_DIR differ"
+    echo "run the script from $DOTFILES_DIR"
+    exit 1
+fi
+
+if [ -z "$1" ]; then
+    echo "USAGE:    dots [ARGUMENT]"
+    echo " - pull   pull local configuration files to repo"
+    echo " - push   distribute configuration files specified in 'TODO' to local configuration directory"
+    exit 1
+elif [ "$1" == "pull" ]; then
+    echo "pulling dots to repo"
+    for dir in "${TODO[@]}"
+    do
+        echo "  removing old $dir"
+        rm -rf $dir
+        echo "  copying new $dir"
+        cp -r $CONFIG_DIR/$dir $DOTFILES_DIR
+    done
+elif [ "$1" == "push" ]; then
+    echo "distributing dots to config directory.. "
+    for dir in "${TODO[@]}"
+    do
+        echo "$dir -> $CONFIG_DIR/$dir"
+        cp -r $dir $CONFIG_DIR
+    done
+else
+    echo "unknown argument '$1'.. exiting"
+    exit 1
+fi
