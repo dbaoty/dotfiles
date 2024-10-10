@@ -7,7 +7,11 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
+    output_format = "i3bar"
     colors = true
+    color_good = "#a9b665"
+    color_degraded = "#d8a657"
+    color_bad = "#ea6962"
     interval = 1
 }
 

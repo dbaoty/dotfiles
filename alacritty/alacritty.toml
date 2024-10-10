@@ -1,6 +1,4 @@
-import = [
-    "~/.config/alacritty/themes/gruvbox_dark.toml"
-]
+import = [ "~/.config/alacritty/themes/gruvbox_material_hard_dark.toml" ]
 
 [env]
 TERM = "xterm-256color"
@@ -8,9 +6,6 @@ TERM = "xterm-256color"
 [window.padding]
 x = 18
 y = 18
-
-[font]
-size = 12.0
 
 [font.normal]
 family = "CommitMono"
@@ -23,6 +18,9 @@ style = "Bold"
 [font.italic]
 family = "CommitMono"
 style = "Bold Italic"
+
+[font]
+size = 12.0
 
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"

@@ -2,6 +2,7 @@
 
 # TODO: throw in .xinitrc from ~
 # TODO: organize repo structure (home files to root dir, config files to .config)
+# TODO: implement confirmation for push argument (to avoid bad stuff :()
 
 CONFIG_DIR="$HOME/.config"
 DOTFILES_DIR="$HOME/projects/personal/dotfiles"
