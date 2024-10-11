@@ -188,11 +188,14 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
-    tray_output false
+        tray_output false
 
-    colors {
-        background #1d2021
-        statusline #d4be98
-        separator #32302f
-    }
+        colors {
+            background #1d2021
+            statusline #d4be98
+            separator #32302f
+
+            focused_workspace #a9b665 #a9b665 #32302f #000000     #000000
+            urgent_workspace  #ea6962 #ea6962 #32302f #000000     #000000
+        }
 }

@@ -1,2 +1,2 @@
--o $HOME/documents/yt/%(title)s.%(ext)s
+-o $HOME/documents/youtube/%(title)s.%(ext)s
 -f bestvideo[height<=?1080]+bestaudio/best
