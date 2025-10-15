@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# this script must be run in the same local repository the version controlled dotfiles
+# are found in. each directory you want symlinked should be placed in the `DIRECTORIES` array.
+# for now, each directory is placed in the user's `.config` directory, indicated by `CONFIG_PREFIX`.
+
+DOTFILES_PREFIX="$(pwd)"
+CONFIG_PREFIX="$HOME/.config"
+
+# directories to symlink
+DIRECTORIES=(
+    "nvim"
+    "hello"
+)
+
+# check for existence of each directory in `DIRECTORIES`
+for directory in "${DIRECTORIES[@]}"; do
+    if [[ ! -d "$directory" ]]; then
+        echo "$DOTFILES_PREFIX/$directory does not exist.."
+        echo "remove from DIRECTORIES or create folder in $DOTFILES_PREFIX.. exiting."
+        exit 0
+    fi
+done
+
+# check if `.config` directory exists
+if [[ -d "$CONFIG_PREFIX" ]]; then
+    cd $CONFIG_PREFIX
+else
+    echo "$CONFIG_PREFIX does not exist."
+    echo "before running the script, create a '.config' directory in your home directory.. exiting."
+    exit 0
+fi
+
+for directory in "${DIRECTORIES[@]}"; do
+    if [[ -d "$directory" ]]; then
+        rm -rf $directory
+    fi
+
+    ln -s $DOTFILES_PREFIX/$directory $directory
+done
+
